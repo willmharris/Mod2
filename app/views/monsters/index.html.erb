@@ -1,0 +1,10 @@
+<h1> Monsters </h1>
+
+<ul>
+    <% @monsters.each do |m| %>
+    <li><%= link_to m.name, monster_path(m) %></li>
+    <% end %>
+</ul>
+
+<%= button_to "Create new monster (Dev)", new_monster_path, method: :get %>
+<%= button_to "Go to Dungeon Masters index(Dev)", dms_path, method: :get %>

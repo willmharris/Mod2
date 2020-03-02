@@ -1,0 +1,2 @@
+class DmMonstersController < ApplicationController
+end

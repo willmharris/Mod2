@@ -1,0 +1,13 @@
+<h1> Monster Profile </h1>
+
+<h3><%= @monster.name %></h3>
+
+<ul>
+<% @monster.dms.each do |d| %>
+    <li><%= link_to d.name, dm_path(d) %></li>
+<% end %>
+</ul>
+
+<%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
+
+<%= button_to "Return to monster index", monsters_path, method: :get %>
