@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
     helper_method :cart
   
     def cart
-      session[:cart] ||= []
+      session[:cart] ||= [] # if not defined, set it equal to an empty array 
     end
 end
