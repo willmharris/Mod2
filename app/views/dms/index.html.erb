@@ -1,10 +1,17 @@
 <h1> Dungeon Masters </h1>
+<h2> Welcome <%= session[:username] %> </h2>
 
 <ul>
     <% @dms.each do |d| %>
     <li><%= link_to d.name, dm_path(d) %></li>
     <% end %>
 </ul>
+
+<br>
+
+<%= button_to "Logout", '/logout', method: :post %>
+
+<br>
 
 <%= button_to "Create new Dungeon Master (Dev)", new_dm_path, method: :get %>
 <%= button_to "Go to monster index (Dev)", monsters_path, method: :get %> 

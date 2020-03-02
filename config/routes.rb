@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :monsters
   resources :dms
   root 'dms#index'
-  post '/test' => 'dms#add'
   get '/test' => 'dms#test'
+  post '/test' => 'dms#add'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#logout'
 end
