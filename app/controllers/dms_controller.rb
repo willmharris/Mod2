@@ -32,6 +32,15 @@ class DmsController < ApplicationController
         redirect_to dms_path 
     end 
 
+    def test 
+        render :test
+    end 
+    
+    def add
+        cart << params[:monster]
+        render :test
+    end
+
     private 
 
     def find_dm 
