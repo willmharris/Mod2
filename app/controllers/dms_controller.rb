@@ -1,7 +1,8 @@
 class DmsController < ApplicationController
 
+    before_action :require_login
     before_action :find_dm, only: [:show, :edit, :update, :destroy]
-
+    
     def index 
         @dms = Dm.all 
     end 

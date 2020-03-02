@@ -10,6 +10,6 @@ class SessionsController < ApplicationController
 
     def logout 
         session.clear 
-        redirect_to '/dms'
+        redirect_to '/'
     end 
 end 

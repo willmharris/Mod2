@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :dm_monsters
   resources :monsters
   resources :dms
-  root 'dms#index'
+  root 'sessions#new'
   get '/test' => 'dms#test'
   post '/test' => 'dms#add'
   get '/login', to: 'sessions#new'
