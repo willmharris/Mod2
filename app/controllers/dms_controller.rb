@@ -1,6 +1,6 @@
 class DmsController < ApplicationController
 
-    before_action :require_login, except: [:welcome, :new]
+    before_action :require_login, except: [:welcome, :new, :create]
     before_action :find_dm, only: [:show, :edit, :update, :destroy]
     
     def index 
