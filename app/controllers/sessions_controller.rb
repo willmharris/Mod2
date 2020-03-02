@@ -1,15 +1,16 @@
 class SessionsController < ApplicationController 
     
-    def new 
+    def login
     end 
 
-    def create 
-        session[:username] = params[:username]
-        redirect_to '/dms'
+    def validate
+        session[:name] = params[:name]
+        @dm = Dm.find_by(name: session[:name])
+        redirect_to dm_path(@dm)
     end 
 
     def logout 
         session.clear 
-        redirect_to '/'
+        redirect_to '/welcome'
     end 
 end 

@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   resources :dm_monsters
   resources :monsters
   resources :dms
-  root 'sessions#new'
+  root 'dms#welcome'
   get '/test' => 'dms#test'
   post '/test' => 'dms#add'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  get '/welcome', to: 'dms#welcome'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#validate'
   post '/logout', to: 'sessions#logout'
 end

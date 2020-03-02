@@ -1,6 +1,4 @@
-<h1> DM Profile for <%= @dm.name %></h1>
-
-<h3>Your name is <%= @dm.name %></h3>
+<h1> DM Profile for <%= session[:name] %></h1>
 
 <h3>Your monsters: </h3>
 
@@ -17,3 +15,7 @@
 <%= button_to "Go to monster index", monsters_path, method: :get %>
 
 <%= button_to "Dm index (Dev)", dms_path, method: :get %>
+
+<br> 
+
+<%= button_to "Logout", '/logout', method: :post %>

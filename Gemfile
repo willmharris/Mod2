@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # added gem 
 gem 'database_cleaner-active_record'
+gem 'bcrypt' 
