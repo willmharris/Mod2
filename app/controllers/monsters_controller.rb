@@ -20,6 +20,7 @@ class MonstersController < ApplicationController
         if @monster.valid? 
             @monster.save 
             @monster.update(creator_id: @dm.id)
+            DmMonster.create(dm_id: @dm.id, monster_id: @monster.id)
             redirect_to monster_path(@monster)
         else 
             render :new 

@@ -22,3 +22,5 @@
 <%= button_to "Add this monster to your list", "/add/#{@monster.id}", method: :post %>
 
 <%= button_to "Return to monster index", monsters_path, method: :get %>
+
+<%= button_to "Return to your proflie", dm_path(@dm), method: :get %>
