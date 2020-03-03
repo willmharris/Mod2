@@ -1,5 +1,5 @@
 <h1> Monster Profile: <%= @monster.name %> </h1>
-<h3>Created by: <%= @creator %> </h3>
+<h3>Created by: <%= link_to @creator.name, dm_path(@creator) %> </h3>
 
 <p>Size: <%= @monster.size %></p>
 <p>Category: <%= @monster.category %></p>

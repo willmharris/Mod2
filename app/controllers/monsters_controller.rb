@@ -8,7 +8,7 @@ class MonstersController < ApplicationController
     end 
 
     def show 
-        @creator = Dm.find(@monster.creator_id).name
+        @creator = Dm.find(@monster.creator_id)
     end 
 
     def new 

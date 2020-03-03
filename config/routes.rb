@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :dm_monsters
   resources :monsters
   resources :dms
   get '/login' => 'sessions#new'

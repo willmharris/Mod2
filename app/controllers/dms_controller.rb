@@ -7,6 +7,7 @@ class DmsController < ApplicationController
     end 
 
     def show 
+        @dm = Dm.find(params[:id])
     end 
 
     def new 
@@ -38,10 +39,6 @@ class DmsController < ApplicationController
     end 
 
     private 
-
-    def find_dm 
-        @dm = Dm.find(params[:id])
-    end 
 
     def dm_params 
         params.require(:dm).permit(:name, :password, :password_confirmation, :email)
