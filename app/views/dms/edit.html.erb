@@ -1,14 +1,9 @@
-<h1> Edit <%= @dm.name %> </h1>
+<h1> Edit your profile </h1>
 
 <%= form_for @dm do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit "Change name" %>
-<% end %>
-
-<%= form_for @dm do |f| %>
-    <%= f.collection_select :id, Monster.all, :id, :name %>
-    <%= f.submit "Add monster" %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.submit "Change email" %>
 <% end %>
 
 <%= button_to "Delete Dungeon Master", dm_path(@dm), method: :delete %>

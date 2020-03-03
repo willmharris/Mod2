@@ -29,7 +29,6 @@ class DmsController < ApplicationController
 
     def update 
         @dm.update(dm_params)
-        DmMonster.create(monster_id: params[:id], dm_id: params[:dm][:id]) 
         redirect_to dm_path(@dm)
     end 
 
@@ -45,7 +44,7 @@ class DmsController < ApplicationController
     end 
 
     def dm_params 
-        params.require(:dm).permit(:name, :password, :password_confirmation)
+        params.require(:dm).permit(:name, :password, :password_confirmation, :email)
     end 
 
 end
