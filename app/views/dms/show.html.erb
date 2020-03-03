@@ -2,21 +2,33 @@
 
 <h3>Your email: <%= @dm.email %></h3>
 
-<h3>Your monsters: </h3>
+<h3>Your created monsters: </h3>
 
 <ul>
 <% @dm.monsters.each do |m| %>
-    <li><%= link_to m.name, monster_path(m) %></li>
+    <% if session[:dm_id] == m.creator_id %>
+        <li><%= link_to m.name, monster_path(m) %></li>
+    <% end %>
 <% end %>
 </ul>
 
-<%= button_to "Edit this Dungeon Master", edit_dm_path(@dm), method: :get %>
+<h3>Your added monsters: </h3>
+
+<ul>
+<% @dm.monsters.each do |m| %>
+    <% if session[:dm_id] != m.creator_id %>
+        <li><%= link_to m.name, monster_path(m) %></li>
+    <% end %>
+<% end %>
+</ul>
+
+<%= button_to "Edit your profile", edit_dm_path(@dm), method: :get %>
 
 <%= button_to "Create new monster", new_monster_path, method: :get %>
 
 <%= button_to "Go to monster index", monsters_path, method: :get %>
 
-<%= button_to "Dm index (Dev)", dms_path, method: :get %>
+<%= button_to "Dm index", dms_path, method: :get %>
 
 <br> 
 
