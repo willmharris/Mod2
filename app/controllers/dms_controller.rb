@@ -14,10 +14,14 @@ class DmsController < ApplicationController
     end 
 
     def create 
-        @dm = Dm.create(dm_params)
-        return redirect_to controller: 'dms', action: 'new' unless @dm.save
-        session[:dm_id] = @dm.id
-        redirect_to dm_path(@dm)
+        @dm = Dm.new(dm_params)
+        if @dm.valid? 
+            @dm.save
+            session[:dm_id] = @dm.id
+            redirect_to dm_path(@dm)
+        else 
+            render :new
+        end 
     end 
 
     def edit 
