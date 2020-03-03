@@ -15,8 +15,9 @@
 <p>Charisma: <%= @monster.charisma %></p>
 <p>CR: <%= @monster.cr %></p>
 
-
-<%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
+<% if session[:dm_id] == @monster.creator_id %>
+    <%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
+<% end %>
 
 <%= button_to "Add this monster to your list", "/add/#{@monster.id}", method: :post %>
 

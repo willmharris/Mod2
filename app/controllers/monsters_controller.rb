@@ -27,6 +27,9 @@ class MonstersController < ApplicationController
     end 
 
     def edit 
+        if session[:dm_id] != @monster.creator_id
+            redirect_to dm_path(@dm)
+        end 
     end 
 
     def update 
