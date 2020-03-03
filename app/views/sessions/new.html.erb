@@ -1,5 +1,9 @@
+<h1>Welcome to MonsterMash!</h1>
+
+<%= flash[:error] %>
+
 <%= form_for @dm, url: login_path, method: :post do |f| %>
-    <%= f.label :name %>
+    <%= f.label "Username" %>
     <%= f.text_field :name %>
     <%= f.label :password %>
     <%= f.password_field :password %>
