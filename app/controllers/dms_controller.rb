@@ -1,6 +1,6 @@
 class DmsController < ApplicationController
     
-    before_action :require_logged_in
+    before_action :require_logged_in, except: [:new, :create]
 
     def index 
         @dms = Dm.all 
@@ -17,7 +17,7 @@ class DmsController < ApplicationController
         @dm = Dm.create(dm_params)
         return redirect_to controller: 'dms', action: 'new' unless @dm.save
         session[:dm_id] = @dm.id
-        redirect_to controller: 'welcome', action: 'home'
+        redirect_to dm_path(@dm)
     end 
 
     def edit 
