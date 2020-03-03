@@ -9,13 +9,13 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :size %>
-    <%= f.text_field :size %>
+    <%= f.select :size, ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"] %>
     <br>
     <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.select :category, ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"] %>
     <br>
     <%= f.label :alignment %>
-    <%= f.text_field :alignment %>
+    <%= f.select :alignment, ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"] %>
     <br>
     <%= f.label :ac %>
     <%= f.number_field :ac %>
