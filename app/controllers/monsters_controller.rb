@@ -33,7 +33,6 @@ class MonstersController < ApplicationController
         @updated_monster = Monster.new(monster_params)
         if @updated_monster.valid?
             @monster.update(monster_params)
-            DmMonster.create(monster_id: params[:id], dm_id: params[:monster][:id])
             redirect_to monster_path(@monster)
         else 
             render :edit 
@@ -43,6 +42,11 @@ class MonstersController < ApplicationController
     def destroy 
         @monster.destroy 
         redirect_to monsters_path 
+    end 
+
+    def add 
+        DmMonster.create(dm_id: session[:dm_id], monster_id: params[:id])
+        redirect_to dm_path(@dm)
     end 
 
     private 

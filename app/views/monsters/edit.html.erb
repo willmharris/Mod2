@@ -50,10 +50,5 @@
     <%= f.submit "Update monster" %>
 <% end %>
 
-<%= form_for @monster do |f| %>
-    <%= f.collection_select :id, Dm.all, :id, :name %>
-    <%= f.submit "Add Dm" %>
-<% end %>
-
 <%= button_to "Delete monster", monster_path(@monster), method: :delete %>
 <%= button_to "Return to index", dms_path, method: :get %>

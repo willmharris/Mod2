@@ -15,12 +15,9 @@
 <p>Charisma: <%= @monster.charisma %></p>
 <p>CR: <%= @monster.cr %></p>
 
-<ul>
-<% @monster.dms.each do |d| %>
-    <li><%= link_to d.name, dm_path(d) %></li>
-<% end %>
-</ul>
 
 <%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
+
+<%= button_to "Add this monster to your list", "/add/#{@monster.id}", method: :post %>
 
 <%= button_to "Return to monster index", monsters_path, method: :get %>
