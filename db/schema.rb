@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_225228) do
+ActiveRecord::Schema.define(version: 2020_03_03_160619) do
 
   create_table "dm_monsters", force: :cascade do |t|
     t.integer "dm_id"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 2020_03_02_225228) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "creator_id"
+    t.string "size"
+    t.string "category"
+    t.string "alignment"
+    t.integer "ac"
+    t.integer "hp"
+    t.integer "speed"
+    t.integer "strength"
+    t.integer "dexterity"
+    t.integer "constitution"
+    t.integer "intelligence"
+    t.integer "wisdom"
+    t.integer "charisma"
+    t.integer "cr"
   end
 
 end

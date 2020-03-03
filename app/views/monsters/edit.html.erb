@@ -1,9 +1,53 @@
 <h1> Edit <%= @monster.name %> </h1>
 
+<% if @updated_monster %>
+<%= render partial: "shared/error_list", locals: {new_object: @updated_monster}  %>
+<% end %>
+
 <%= form_for @monster do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.submit "Change name" %>
+    <br>
+    <%= f.label :size %>
+    <%= f.text_field :size %>
+    <br>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+    <br>
+    <%= f.label :alignment %>
+    <%= f.text_field :alignment %>
+    <br>
+    <%= f.label :ac %>
+    <%= f.number_field :ac %>
+    <br>
+    <%= f.label :hp %>
+    <%= f.number_field :hp %>
+    <br>
+    <%= f.label :speed %>
+    <%= f.number_field :speed %>
+    <br>
+    <%= f.label :strength %>
+    <%= f.number_field :strength %>
+    <br>
+    <%= f.label :dexterity %>
+    <%= f.number_field :dexterity %>
+    <br>
+    <%= f.label :constitution %>
+    <%= f.number_field :constitution %>
+    <br>
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence %>
+    <br>
+    <%= f.label :wisdom %>
+    <%= f.number_field :wisdom %>
+    <br>
+    <%= f.label :charisma %>
+    <%= f.number_field :charisma %>
+    <br>
+    <%= f.label :cr %>
+    <%= f.number_field :cr %>
+    <br>
+    <%= f.submit "Update monster" %>
 <% end %>
 
 <%= form_for @monster do |f| %>

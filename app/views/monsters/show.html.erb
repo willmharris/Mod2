@@ -1,6 +1,19 @@
-<h1> Monster Profile </h1>
+<h1> Monster Profile: <%= @monster.name %> </h1>
+<h3>Created by: <%= @creator %> </h3>
 
-<h3><%= @monster.name %></h3>
+<p>Size: <%= @monster.size %></p>
+<p>Category: <%= @monster.category %></p>
+<p>Alignment: <%= @monster.alignment %></p>
+<p>AC: <%= @monster.ac %></p>
+<p>HP: <%= @monster.hp %></p>
+<p>Speed: <%= @monster.speed %></p>
+<p>Strength: <%= @monster.strength %></p>
+<p>Dexterity: <%= @monster.dexterity %></p>
+<p>Constitution: <%= @monster.constitution %></p>
+<p>Intelligence: <%= @monster.intelligence %></p>
+<p>Wisdom: <%= @monster.wisdom %></p>
+<p>Charisma: <%= @monster.charisma %></p>
+<p>CR: <%= @monster.cr %></p>
 
 <ul>
 <% @monster.dms.each do |d| %>

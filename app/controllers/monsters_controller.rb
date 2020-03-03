@@ -8,6 +8,7 @@ class MonstersController < ApplicationController
     end 
 
     def show 
+        @creator = Dm.find(@monster.creator_id).name
     end 
 
     def new 
@@ -15,17 +16,28 @@ class MonstersController < ApplicationController
     end 
 
     def create 
-        @monster = Monster.create(monster_params)
-        redirect_to monster_path(@monster)
+        @monster = Monster.new(monster_params)
+        if @monster.valid? 
+            @monster.save 
+            @monster.update(creator_id: @dm.id)
+            redirect_to monster_path(@monster)
+        else 
+            render :new 
+        end 
     end 
 
     def edit 
     end 
 
     def update 
-        @monster.update(monster_params)
-        DmMonster.create(monster_id: params[:id], dm_id: params[:monster][:id])
-        redirect_to monster_path(@monster)
+        @updated_monster = Monster.new(monster_params)
+        if @updated_monster.valid?
+            @monster.update(monster_params)
+            DmMonster.create(monster_id: params[:id], dm_id: params[:monster][:id])
+            redirect_to monster_path(@monster)
+        else 
+            render :edit 
+        end 
     end 
 
     def destroy 
@@ -40,7 +52,7 @@ class MonstersController < ApplicationController
     end 
 
     def monster_params 
-        params.require(:monster).permit(:name)
+        params.require(:monster).permit(:name, :size, :category, :alignment, :ac, :hp, :speed, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :cr)
     end 
 
 end
