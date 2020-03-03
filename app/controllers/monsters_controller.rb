@@ -54,6 +54,11 @@ class MonstersController < ApplicationController
         redirect_to dm_path(@dm)
     end 
 
+    def remove 
+        DmMonster.find_by(dm_id: session[:dm_id], monster_id: params[:id]).destroy
+        redirect_to dm_path(@dm)
+    end 
+
     private 
 
     def find_monster
@@ -61,7 +66,7 @@ class MonstersController < ApplicationController
     end 
 
     def monster_params 
-        params.require(:monster).permit(:name, :size, :category, :alignment, :ac, :hp, :speed, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :cr)
+        params.require(:monster).permit(:name, :size, :category, :alignment, :ac, :hp, :speed, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :cr, :image)
     end 
 
 end

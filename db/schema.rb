@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_175239) do
+ActiveRecord::Schema.define(version: 2020_03_03_222915) do
 
   create_table "dm_monsters", force: :cascade do |t|
     t.integer "dm_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_175239) do
     t.integer "wisdom"
     t.integer "charisma"
     t.integer "cr"
+    t.string "image"
   end
 
 end

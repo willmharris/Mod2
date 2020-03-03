@@ -1,6 +1,10 @@
 <h1> Monster Profile: <%= @monster.name %> </h1>
 <h3>Created by: <%= link_to @creator.name, dm_path(@creator) %> </h3>
 
+<br>
+<img src="<%= @monster.image %>">
+<br>
+
 <p>Size: <%= @monster.size %></p>
 <p>Category: <%= @monster.category %></p>
 <p>Alignment: <%= @monster.alignment %></p>
@@ -19,7 +23,13 @@
     <%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
 <% end %>
 
-<%= button_to "Add this monster to your list", "/add/#{@monster.id}", method: :post %>
+<% if @creator.id != @dm.id %>
+    <% if DmMonster.find_by(dm_id: @dm.id, monster_id: @monster.id)%>
+        <%= button_to "Remove this monster from your list", "/remove/#{@monster.id}", method: :post %>
+    <% else %>
+        <%= button_to "Add this monster to your list", "/add/#{@monster.id}", method: :post %>
+    <% end %>
+<% end %>
 
 <%= button_to "Return to monster index", monsters_path, method: :get %>
 
