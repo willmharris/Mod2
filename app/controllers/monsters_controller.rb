@@ -13,6 +13,7 @@ class MonstersController < ApplicationController
 
     def new 
         @monster = Monster.new 
+        @default = 10 
     end 
 
     def create 
