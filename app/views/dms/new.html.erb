@@ -1,8 +1,11 @@
 <h1> Create a new Dungeon Master </h1>
 
-<%= form_for @dm do |f| %>
+<%= form_for @dm, controller: 'dms', action: 'create' do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.submit "Create" %>
-<% end %>
-
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "create" %>
+  <% end %>

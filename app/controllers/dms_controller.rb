@@ -1,7 +1,4 @@
 class DmsController < ApplicationController
-
-    before_action :require_login, except: [:welcome, :new, :create]
-    before_action :find_dm, only: [:show, :edit, :update, :destroy]
     
     def index 
         @dms = Dm.all 
@@ -16,8 +13,9 @@ class DmsController < ApplicationController
 
     def create 
         @dm = Dm.create(dm_params)
-        session[:name] = @dm.name 
-        redirect_to dm_path(@dm)
+        return redirect_to controller: 'dms', action: 'new' unless @dm.save
+        session[:dm_id] = @dm.id
+        redirect_to controller: 'welcome', action: 'home'
     end 
 
     def edit 
@@ -34,18 +32,6 @@ class DmsController < ApplicationController
         redirect_to dms_path 
     end 
 
-    def test 
-        render :test
-    end 
-    
-    def add
-        cart << params[:monster]
-        render :test
-    end
-
-    def welcome 
-    end 
-
     private 
 
     def find_dm 
@@ -53,7 +39,7 @@ class DmsController < ApplicationController
     end 
 
     def dm_params 
-        params.require(:dm).permit(:name)
+        params.require(:dm).permit(:name, :password, :password_confirmation)
     end 
 
 end

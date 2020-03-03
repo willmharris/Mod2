@@ -1,6 +1,5 @@
 class MonstersController < ApplicationController
 
-    before_action :require_login
     before_action :find_monster, only: [:show, :edit, :update, :destroy]
 
     def index 
