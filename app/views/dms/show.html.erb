@@ -1,35 +1,45 @@
-<h1> DM Profile for <%= @dm.name %></h1>
+<h1> DM Profile for <%= @this_dm.name %></h1>
 
-<h3>Your email: <%= @dm.email %></h3>
+<h3>Email: <%= @this_dm.email %></h3>
 
-<h3>Your created monsters: </h3>
+<h3>Created monsters: </h3>
 
 <ul>
-<% @dm.monsters.each do |m| %>
-    <% if session[:dm_id] == m.creator_id %>
+<% @this_dm.monsters.each do |m| %>
+    <% if @this_dm.id == m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
 </ul>
 
-<h3>Your added monsters: </h3>
+<h3>Added monsters: </h3>
 
 <ul>
-<% @dm.monsters.each do |m| %>
-    <% if session[:dm_id] != m.creator_id %>
+<% @this_dm.monsters.each do |m| %>
+    <% if @this_dm.id != m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
 </ul>
 
-<%= button_to "Edit your profile", edit_dm_path(@dm), method: :get %>
+<% if @mine == true %>
+    <%= button_to "Edit your profile", edit_dm_path(@dm), method: :get %>
+<% end %>
 
-<%= button_to "Create new monster", new_monster_path, method: :get %>
+<% if @mine == true %>
+    <%= button_to "Create new monster", new_monster_path, method: :get %>
+<% end %>
 
 <%= button_to "Go to monster index", monsters_path, method: :get %>
 
-<%= button_to "Dm index", dms_path, method: :get %>
+<%= button_to "Go to DM index", dms_path, method: :get %>
+
+<% if @mine == false %>
+    <%= button_to "Return to your proflie", dm_path(@dm), method: :get %>
+<% end %>
 
 <br> 
 
-<%= button_to "Logout", '/logout', method: :post %>
+<% if @mine == true %>
+    <%= button_to "Logout", '/logout', method: :post %>
+<% end %>
