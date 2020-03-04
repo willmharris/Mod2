@@ -71,11 +71,12 @@
 
 <h3>Add an action </h3>
 
-<%= form_tag "/add_action/#{@monster.id}" do %>
+<%= form_tag "/add_action" do %>
     <%= label_tag :name %>
     <%= text_field_tag :name %>
     <%= label_tag :description %>
     <%= text_area_tag :description %>
+    <%= hidden_field_tag 'monster_id', "#{@monster.id}" %>
     <%= submit_tag "Add action" %>
 <% end %>
 

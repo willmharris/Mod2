@@ -9,8 +9,6 @@ class DmsController < ApplicationController
     def show 
         if my_profile?
             @mine = true 
-        else 
-            @mine = false
         end 
     end 
 
@@ -52,8 +50,7 @@ class DmsController < ApplicationController
     end 
 
     def my_profile?
-        @this_dm = Dm.find(params[:id])
-        @this_dm.id == @dm.id
+        params[:id].to_i == @dm.id
     end 
 
 end

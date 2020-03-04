@@ -1,12 +1,12 @@
-<h1> DM Profile for <%= @this_dm.name %></h1>
+<h1> DM Profile for <%= @dm.name %></h1>
 
-<h3>Email: <%= @this_dm.email %></h3>
+<h3>Email: <%= @dm.email %></h3>
 
 <h3>Created monsters: </h3>
 
 <ul>
-<% @this_dm.monsters.each do |m| %>
-    <% if @this_dm.id == m.creator_id %>
+<% @dm.monsters.each do |m| %>
+    <% if @dm.id == m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
@@ -15,8 +15,8 @@
 <h3>Added monsters: </h3>
 
 <ul>
-<% @this_dm.monsters.each do |m| %>
-    <% if @this_dm.id != m.creator_id %>
+<% @dm.monsters.each do |m| %>
+    <% if @dm.id != m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
@@ -34,12 +34,8 @@
 
 <%= button_to "Go to DM index", dms_path, method: :get %>
 
-<% if @mine == false %>
-    <%= button_to "Return to your proflie", dm_path(@dm), method: :get %>
-<% end %>
-
-<br> 
-
 <% if @mine == true %>
     <%= button_to "Logout", '/logout', method: :post %>
+<% else %>
+    <%= button_to "Return to your proflie", dm_path(@dm), method: :get %>
 <% end %>
