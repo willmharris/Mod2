@@ -50,6 +50,24 @@
     <%= f.label :image %>
     <%= f.text_field :image %>
     <br>
+    <h3> Abilities </h3>
+    <%= f.fields_for :ability do |a| %>
+        <%= a.label :name %>
+        <%= a.text_field :name, value: @ability.name %>
+        <br>
+        <%= a.label :description %>
+        <%= a.text_area :description, value: @ability.description %>
+    <% end %>
+    <br>
+    <h3> Actions </h3>
+    <%= f.fields_for :action do |a| %>
+        <%= a.label :name %>
+        <%= a.text_field :name, value: @action.name %>
+        <br>
+        <%= a.label :description %>
+        <%= a.text_area :description, value: @action.description %>
+    <% end %>
+    <br>
     <%= f.submit "Update monster" %>
 <% end %>
 

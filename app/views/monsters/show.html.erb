@@ -19,6 +19,26 @@
 <p>Charisma: <%= @monster.charisma %></p>
 <p>CR: <%= @monster.cr %></p>
 
+<br>
+
+<p> Abilities </p>
+<br>
+<% @monster.abilities.each do |a| %>
+    Name: <%= a.name %>
+    <br>
+    Description: <%= a.description %>
+<% end %>
+
+<br>
+
+<p> Actions </p>
+<br>
+<% @monster.actions.each do |a| %>
+    Name: <%= a.name %>
+    <br>
+    Description: <%= a.description %>
+<% end %>
+
 <% if session[:dm_id] == @monster.creator_id %>
     <%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>
 <% end %>
