@@ -58,20 +58,22 @@
 <h3>Edit actions </h3>
 
 <% @monster.actions.each do |act| %>
-    <%= form_tag "/update_action" do %>
+    <%= form_tag(action_path(act), method: :patch) do %>
         <%= label_tag :name %>
         <%= text_field_tag :name, value = "#{act.name}" %>
         <%= label_tag :description %>
         <%= text_area_tag :description, value = "#{act.description}" %>
-        <%= hidden_field_tag 'action_id', "#{act.id}" %>
         <%= submit_tag "Edit action" %>
     <% end %>
+    <%= button_to "Delete this action", action_path(act), method: :delete %>
+    <br>
+
 <% end %>
 
 
 <h3>Add an action </h3>
 
-<%= form_tag "/add_action" do %>
+<%= form_tag actions_path do %>
     <%= label_tag :name %>
     <%= text_field_tag :name %>
     <%= label_tag :description %>
