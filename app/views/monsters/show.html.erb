@@ -21,23 +21,16 @@
 
 <br>
 
-<p> Abilities </p>
-<br>
-<% @monster.abilities.each do |a| %>
-    Name: <%= a.name %>
-    <br>
-    Description: <%= a.description %>
-<% end %>
-
-<br>
-
-<p> Actions </p>
-<br>
+<p> Actions: </p>
 <% @monster.actions.each do |a| %>
     Name: <%= a.name %>
     <br>
     Description: <%= a.description %>
+    <br>
+    <br>
 <% end %>
+
+<br>
 
 <% if session[:dm_id] == @monster.creator_id %>
     <%= button_to "Edit this monster", edit_monster_path(@monster), method: :get %>

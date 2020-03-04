@@ -50,25 +50,33 @@
     <%= f.label :image %>
     <%= f.text_field :image %>
     <br>
-    <h3> Abilities </h3>
-    <%= f.fields_for :ability do |a| %>
-        <%= a.label :name %>
-        <%= a.text_field :name, value: @ability.name %>
-        <br>
-        <%= a.label :description %>
-        <%= a.text_area :description, value: @ability.description %>
+    <%= f.submit "Update monster stats" %>
+<% end %>
+
+<br> 
+
+<h3>Edit actions </h3>
+
+<% @monster.actions.each do |act| %>
+    <%= form_tag "/update_action" do %>
+        <%= label_tag :name %>
+        <%= text_field_tag :name, value = "#{act.name}" %>
+        <%= label_tag :description %>
+        <%= text_area_tag :description, value = "#{act.description}" %>
+        <%= hidden_field_tag 'action_id', "#{act.id}" %>
+        <%= submit_tag "Edit action" %>
     <% end %>
-    <br>
-    <h3> Actions </h3>
-    <%= f.fields_for :action do |a| %>
-        <%= a.label :name %>
-        <%= a.text_field :name, value: @action.name %>
-        <br>
-        <%= a.label :description %>
-        <%= a.text_area :description, value: @action.description %>
-    <% end %>
-    <br>
-    <%= f.submit "Update monster" %>
+<% end %>
+
+
+<h3>Add an action </h3>
+
+<%= form_tag "/add_action/#{@monster.id}" do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+    <%= label_tag :description %>
+    <%= text_area_tag :description %>
+    <%= submit_tag "Add action" %>
 <% end %>
 
 <%= button_to "Delete monster", monster_path(@monster), method: :delete %>
