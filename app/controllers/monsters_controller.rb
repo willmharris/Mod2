@@ -14,9 +14,19 @@ class MonstersController < ApplicationController
     def order 
         @monsters = Monster.all
         category = params[:category]
+        min = params[:minimum].to_i
+        max = params[:maximum].to_i
         unless category == "Any"
             @monsters = @monsters.select do |m|
                 m.category == category
+            end 
+        end 
+        if min || max 
+            if max == 0
+                max = 100
+            end 
+            @monsters = @monsters.select do |m|
+                m.cr >= min && m.cr <= max
             end 
         end 
         if params[:order] == "Alphabetically"
