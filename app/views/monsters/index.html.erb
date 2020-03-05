@@ -2,13 +2,12 @@
 
 <%= form_tag url_for('/monsters/order'), method: 'post' do %>
     <%= select_tag "order", raw("<option>Alphabetically</option><option>Popularity</option>") %>
-    <%= select_tag "direction", raw("<option>Ascending</option><option>Descending</option>") %>
     <%= submit_tag "Order index" %>
 <% end %> 
 
 <ul>
     <% @monsters.each do |m| %>
-    <li><%= link_to m.name, monster_path(m) %></li>
+    <li><%= link_to m.name, monster_path(m) %> users: <%= m.popularity %></li>
     <% end %>
 </ul>
 

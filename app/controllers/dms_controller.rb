@@ -39,6 +39,10 @@ class DmsController < ApplicationController
     end 
 
     def destroy 
+        @dm.monsters.each do |m|
+            decreased_popularity = m.popularity - 1
+            m.update(popularity: decreased_popularity)
+        end 
         @dm.destroy 
         redirect_to dms_path 
     end 

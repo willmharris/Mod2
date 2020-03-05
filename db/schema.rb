@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_142749) do
+ActiveRecord::Schema.define(version: 2020_03_05_170958) do
 
   create_table "abilities", force: :cascade do |t|
     t.string "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_142749) do
     t.integer "charisma"
     t.integer "cr"
     t.string "image"
+    t.integer "popularity"
   end
 
 end

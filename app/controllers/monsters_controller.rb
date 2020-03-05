@@ -1,7 +1,7 @@
 class MonstersController < ApplicationController
 
     before_action :require_logged_in
-    before_action :find_monster, only: [:show, :edit, :update, :destroy]
+    before_action :find_monster, only: [:show, :edit, :update, :destroy, :add, :remove]
     @@monsters = nil
 
     def index 
@@ -15,10 +15,8 @@ class MonstersController < ApplicationController
         @monsters = Monster.all
         if params[:order] == "Alphabetically"
             @@monsters = @monsters.sort_by {|m| m.name} 
-        end 
-        if params[:direction] == "Descending"
-            @@monsters = @@monsters.reverse
-            
+        else 
+            @@monsters = @monsters.sort_by {|m| m.popularity}.reverse
         end 
         redirect_to monsters_path 
     end 
@@ -37,7 +35,7 @@ class MonstersController < ApplicationController
         @monster = Monster.new(monster_params)
         if @monster.valid? 
             @monster.save 
-            @monster.update(creator_id: @dm.id)
+            @monster.update(creator_id: @dm.id, popularity: 0)
             DmMonster.create(dm_id: @dm.id, monster_id: @monster.id)
             @action = Action.new(name: params[:monster][:action][:name], description: params[:monster][:action][:description], monster_id: @monster.id)
             if @action.name || @action.description 
@@ -77,12 +75,16 @@ class MonstersController < ApplicationController
     end 
 
     def add 
-        DmMonster.create(dm_id: session[:dm_id], monster_id: params[:id])
+        DmMonster.find_or_create_by(dm_id: session[:dm_id], monster_id: params[:id])
+        increased_popularity = @monster.popularity + 1 
+        @monster.update(popularity: increased_popularity)
         redirect_to dm_path(@dm)
     end 
 
     def remove 
         DmMonster.find_by(dm_id: session[:dm_id], monster_id: params[:id]).destroy
+        decreased_popularity = @monster.popularity - 1
+        @monster.update(popularity: decreased_popularity)
         redirect_to dm_path(@dm)
     end 
 
