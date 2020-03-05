@@ -2,9 +2,25 @@ class MonstersController < ApplicationController
 
     before_action :require_logged_in
     before_action :find_monster, only: [:show, :edit, :update, :destroy]
+    @@monsters = nil
 
     def index 
-        @monsters = Monster.all 
+        @monsters = Monster.all
+        if @@monsters 
+            @monsters = @@monsters
+        end 
+    end 
+
+    def order 
+        @monsters = Monster.all
+        if params[:order] == "Alphabetically"
+            @@monsters = @monsters.sort_by {|m| m.name} 
+        end 
+        if params[:direction] == "Descending"
+            @@monsters = @@monsters.reverse
+            
+        end 
+        redirect_to monsters_path 
     end 
 
     def show 
