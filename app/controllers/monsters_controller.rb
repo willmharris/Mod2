@@ -13,6 +13,12 @@ class MonstersController < ApplicationController
 
     def order 
         @monsters = Monster.all
+        category = params[:category]
+        unless category == "Any"
+            @monsters = @monsters.select do |m|
+                m.category == category
+            end 
+        end 
         if params[:order] == "Alphabetically"
             @@monsters = @monsters.sort_by {|m| m.name} 
         else 
