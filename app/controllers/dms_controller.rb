@@ -10,6 +10,7 @@ class DmsController < ApplicationController
         if my_profile?
             @mine = true 
         end 
+        @profile_dm = Dm.find(params[:id])
     end 
 
     def new 

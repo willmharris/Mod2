@@ -1,12 +1,12 @@
-<h1> DM Profile for <%= @dm.name %></h1>
+<h1> DM Profile for <%= @profile_dm.name %></h1>
 
-<h3>Email: <%= @dm.email %></h3>
+<h3>Email: <%= @profile_dm.email %></h3>
 
 <h3>Created monsters: </h3>
 
 <ul>
-<% @dm.monsters.each do |m| %>
-    <% if @dm.id == m.creator_id %>
+<% @profile_dm.monsters.each do |m| %>
+    <% if @profile_dm.id == m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
@@ -15,8 +15,8 @@
 <h3>Added monsters: </h3>
 
 <ul>
-<% @dm.monsters.each do |m| %>
-    <% if @dm.id != m.creator_id %>
+<% @profile_dm.monsters.each do |m| %>
+    <% if @profile_dm.id != m.creator_id %>
         <li><%= link_to m.name, monster_path(m) %></li>
     <% end %>
 <% end %>
