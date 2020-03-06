@@ -1,3 +1,4 @@
+<div class="login_page">
 <h1>Welcome to MonsterMash!</h1>
 
 <%= flash[:error] %>
@@ -8,5 +9,7 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
     <%= f.submit "log in" %>
+    <br>
     Or <%= link_to(controller: 'dms', action: 'new') { 'sign up' } %>
-  <% end %>
+<% end %>
+<div>

@@ -1,3 +1,4 @@
+<div class="monster_display_pages">
 <h1> Monster Profile: <%= @monster.name %> </h1>
 <h3>Created by: <%= link_to @creator.name, dm_path(@creator) %> </h3>
 
@@ -48,3 +49,4 @@
 <%= button_to "Return to monster index", monsters_path, method: :get %>
 
 <%= button_to "Return to your proflie", dm_path(@dm), method: :get %>
+<div>
