@@ -1,5 +1,7 @@
 .monster_display_pages {
-    background-color: black;
+    background: url("https://images7.alphacoders.com/621/thumb-1920-621150.jpg");
+    background-position: center;
+    background-size: cover;
     color: white;
 }
 
