@@ -1,6 +1,10 @@
 <div class="monster_display_pages">
 <h1> Edit <%= @monster.name %> </h1>
 
+<br>
+<img src="<%= @monster.image %>" class="monster_image">
+<br>
+
 <% if @updated_monster %>
 <%= render partial: "shared/error_list", locals: {new_object: @updated_monster}  %>
 <% end %>
